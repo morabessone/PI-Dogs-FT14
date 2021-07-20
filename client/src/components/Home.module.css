@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+.background {
+    background-image: url("/home/mora/Escritorio/PI-Dogs/client/src/img/render.png");
+    width:100vw;
+    min-height:38vw;
+    height: 100%;
+    background-size: 100%;
+
+}
+.text {
+    padding: 10px;
+    font-size: 25px;
+    color: #2C3E50;
+    text-transform: uppercase;
+    font-weight: 1000;
+    font-family: "Montserrat";
+   
+}
+.text2 {
+    font-size: 20px;
+    color: #2C3E50;
+    font-family: "Montserrat";
+}
+.back {
+    background-color: rgba(248, 227, 36, 0.6);
+    background-attachment: scroll;
+    
+}
+.contenedor {
+    margin: 10px;
+    width: 280px;
+    text-align: center;
+    display: inline-block;
+    background-color: rgb(253, 226, 182);
+    border-radius: 5%;
+    padding-left: 5px;
+    padding-right: 10px;
+    justify-content:space-around;
+    align-items: center; 
+}
+.image {
+    height: 150px;
+    width: 150px;
+    border-color: black;
+    border-radius: 20%;
+    justify-content: center;
+}
+
+.direccion {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    
+}
+
+.pagination {
+    flex-direction: row;
+    border-radius: 5%;
+    border-color: black;
+    background-color: rgb(251, 172, 0);
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    font-family: Montserrat;
+    list-style: none;
+    margin-right: 1.20rem;
+}
+
+.pagination li {
+    cursor: pointer;
+    border: 1px solid #000000;
+    padding: 15px;
+}

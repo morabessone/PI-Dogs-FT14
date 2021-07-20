@@ -1,0 +1,22 @@
+
+
+.background {
+    background-image: url("/home/mora/Escritorio/PI-Dogs/client/src/img/Find Us Here.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 420px;
+    display: flex;
+}
+
+.button {
+    align-items: center;
+    display: flex;
+    width: 100px;
+    position: absolute;
+    padding: 10%;
+    margin-left: 275px;
+    background-color: transparent;
+    border-color: transparent;
+}

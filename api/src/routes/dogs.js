@@ -11,48 +11,81 @@ const axios = require("axios");
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.get("/", async (req, res, next) => {
-    const {name} = req.query
+router.get('/', async (req, res, next) => {
+    const { name } = req.query;
     if (!name) {
-        try {
-            let myDogs = await Dog.findAll()
-            let api = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
-            Promise.all([myDogs, api]).then((results) => {
-                const [resMyDogs, resApi] =  results;
-                const response = resMyDogs.concat(resApi.data);
-                res.send(response);
-            })
-        } catch (error) {
-            next(error);
-            } 
-        } else {
-            try {
-                let myDogs = await Dog.findAll({
-                where: {
-                name: { [Op.iLike]: `%${name}%` },
-                }
-                });
-                let api = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}&api_key=${API_KEY}`);
-                Promise.all([myDogs, api]).then((results) => {
-                    const [resMyDogs, resApi] = results;
-                    const response = resMyDogs.concat(resApi.data);
-                    res.send(response);
-                })
-                }
-                catch(error) {
-                    next(error)
-                };
+      try {
+        var database = await Dog.findAll({
+          include: {
+            model: Temperament,
+              attributes: {
+                include: ['name'], 
+                exclude:['createdAt', 'updatedAt']
+              },
+              through: {
+                attributes:[]
+              }  
+          }
+        })
+        const api = await axios.get(`${API}?api_key=${API_KEY}`)
+        Promise.all([database, api])
+          .then((results) => {
+            const [databased, apiData] = results;
+            const response = databased.concat(apiData.data)
+            res.send(response);
+          })
+      } catch (error) {
+        next(error)
+        res.send(error.message)
+      }
+    } else {
+      try {
+        var database = await Dog.findAll({
+          include: {
+            model: Temperament,
+              attributes: {
+                include: ['name'], 
+                exclude:['createdAt', 'updatedAt']
+              },
+              through: {
+                attributes:[]
+              }  
+          }
+        })
+  
+        const api = await axios.get(`${API}?api_key=${API_KEY}`)
+        let dogs = await Promise.all([database, api])
+          .then((results) => {
+            const [databased, apiData] = results;
+            const response = databased.concat(apiData.data)
+            return response;
+          })
+        let resultado = []
+        for (let i = 0; i<dogs.length;i++){
+          if(dogs[i].name.includes(name)){
+           resultado.push(dogs[i])
+          }}
+        res.send(resultado).status(200)       
+  
+      } catch (error) {
+        next(error)
+        console.log(error)
+        res.send({error:"Dog does not exist"}).status(404)
+      }
     }
-})
+  
+  })
+
 router.get("/:id", async (req, res, next) => {
     const {id} = req.params;
-    if (id.length) {
+    if (id.length < 15) {
         try {
-            await axios.get(`${API}/${id}&api_key=${API_KEY}`)
-             .then((results) => res.send(results.data))
+            const perritos = await axios.get(`https://api.thedogapi.com/v1/breeds/?api_key=${API_KEY}`)
+            res.json(perritos.data.find(dog => dog.id === parseInt(id)))
         } catch (error) {
             next(error)
         }
+        
     } else {
         try {
             Dog.findAll({ 

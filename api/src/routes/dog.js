@@ -8,18 +8,17 @@ const { Sequelize, UUID } = require("sequelize");
 const { v4: uuidv4 } = require('uuid');
 
 router.post("/", async (req, res, next) => {
-    const dog = req.body;
-    if (!dog) {
-        res.status(400).json({msg: "Must complete the fields to create a new Dog"})
-    } 
+    const{name,
+        height,
+        weight,
+        life_span,
+        temperaments}= req.body; 
+        
+    console.log(temperaments)
     try {
         let id = uuidv4()
-        let newDog = {
-            ...dog,
-            id
-        }
-        const yourNewDog = await Dog.create(newDog);
-        return res.send(yourNewDog)
+        createNewDog = await Dog.create({name, height, weight, life_span, id})
+        await createNewDog.setTemperaments(temperaments)
     } catch (error) {
         next(error)
     }

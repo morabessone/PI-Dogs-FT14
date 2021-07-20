@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+.background {
+    background-image: url("/home/mora/Escritorio/PI-Dogs/client/src/img/render.png");
+    width:100vw;
+    min-height:38vw;
+    height: 100%;
+    background-size: 100%;
+
+}
+.text {
+    padding: 10px;
+    font-size: 35px;
+    color: #2C3E50;
+    text-transform: uppercase;
+    font-weight: 1000;
+    font-family: "Montserrat";
+   
+}
+.text2 {
+    font-size: 25px;
+    color: #2C3E50;
+    font-family: "Montserrat";
+}
+.back {
+    background-color: rgba(255, 255, 255, 0.6);
+    background-attachment: scroll;
+    
+}
+.contenedor {
+    margin: 10px;
+    width: 280px;
+    text-align: center;
+    display: inline-block;
+    background-color: rgb(230, 230, 230);
+    border: solid rgb(70, 50, 126);
+    border-radius: 5%;
+    padding-left: 5px;
+    padding-right: 10px;
+    justify-content:space-around;
+    background-color: burlywood;
+    align-items: center; 
+}
+.image {
+    height: 150px;
+    width: 150px;
+    border-color: black;
+    border-radius: 20%;
+    justify-content: center;
+}
+
+.direccion {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    
+}

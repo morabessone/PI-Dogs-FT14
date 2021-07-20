@@ -1,4 +1,4 @@
-const { Router } = require('express');
+/* const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
@@ -29,12 +29,30 @@ router.get("/", async (req, res, next) => {
             })
             finalTemps.sort()
             for (let i = 0 ; i < finalTemps.length-1 ; i++) {
-                let id = uuidv4();
-                Temperament.create({id: id, name: finalTemps[i]})
+                Temperament.create({name: finalTemps[i]})
             }
+            const database = await Temperament.findAll();
+            res.json(database);
     } catch (error) {
         next(error)
     } 
+})
+ */
+
+require('dotenv').config();
+const { Router } = require('express');
+const router = Router();
+const { API_KEY, API } = process.env;
+const { Temperament } = require("../db.js")
+const axios = require('axios');
+
+router.get("/", async (req, res, next) => {
+    try{
+        const db = await Temperament.findAll()
+        return res.json(db).status(200)
+    } catch (e) {
+        return res.json(e.message).status(409)
+    }
 })
 
 
