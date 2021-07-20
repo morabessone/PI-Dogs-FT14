@@ -8,6 +8,7 @@ import style from "./Home.module.css";
 const Home = () => {
     //me traigo el estado de mi action con useSelector
     const dogs = useSelector((state) => state.allDogs);
+    const filter = useSelector((state) => state.filter);
     // me asigno en el dispatch el useDispatch para poder despachar lo que quiera con esa variable
     // declaro un nuevo estado currentPage = 1 referido a la pag en la que estoy 
     const [currentPage, setCurrentPage] = useState(1);
@@ -105,7 +106,7 @@ const Home = () => {
     
     function renderData(dogs) {
         return (
-            <div>
+            <div className={style.direccion}>
                     {
                         dogs?.map((theDogs) => {
                             // console.log(theDogs)
@@ -125,7 +126,7 @@ const Home = () => {
     return (
 
         <div className={style.background}>
-            {renderData(currentItems)}
+            {filter?.length > 0 ? renderData(filter) : renderData(currentItems)}
             <ul className={style.pagination}>
                 <li>
                     <button onClick={handlePrev} disabled={currentPage === pages[0] ? true : false}>

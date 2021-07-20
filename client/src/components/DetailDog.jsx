@@ -51,9 +51,7 @@ export default function DogDetail({match}) {
             )
         }
     }
-
     
-    console.log(aDog)
     return (
         <div>
         {typeof(aDog) === "undefined" 

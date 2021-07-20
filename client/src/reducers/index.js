@@ -1,10 +1,11 @@
-import {GETALLDOGS, GETDETAIL, CREATEDOG, GETTEMPS, GETDOG, ORDERAZZ, ORDERZAA, ORDERBYTHEHEAVY, ORDERBYTHELIGHT} from "../actions";
+import {GETALLDOGS, GETDETAIL, CREATEDOG, GETTEMPS, GETDOG, ORDERAZZ, ORDERZAA, ORDERBYTHEHEAVY, ORDERBYTHELIGHT, FILTERBYTEMPS} from "../actions";
 
 const initialState = {
     allDogs: [],
     dogDetail: [],
     createdDog: [],
     allTemps: [],
+    filter: [],
 }
 
 function rootReducer(state = initialState, action) {
@@ -62,15 +63,20 @@ function rootReducer(state = initialState, action) {
                 allDogs: state.allDogs
             }
         case ORDERBYTHEHEAVY:
-        return {
-            ...state,
-            allDogs: action.payload
-        }
+            return {
+                ...state,
+                allDogs: action.payload
+            }
         case ORDERBYTHELIGHT:
-        return {
-            ...state,
-            allDogs: action.payload
-        }
+            return {
+                ...state,
+                allDogs: action.payload
+            }
+        case FILTERBYTEMPS:
+            return {
+                ...state,
+                filter: action.payload
+            }
         default:
             return state;
     }

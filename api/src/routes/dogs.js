@@ -24,7 +24,7 @@ router.get('/', async (req, res, next) => {
               },
               through: {
                 attributes:[]
-              }  
+              }
           }
         })
         const api = await axios.get(`${API}?api_key=${API_KEY}`)
@@ -45,11 +45,10 @@ router.get('/', async (req, res, next) => {
             model: Temperament,
               attributes: {
                 include: ['name'], 
-                exclude:['createdAt', 'updatedAt']
               },
               through: {
                 attributes:[]
-              }  
+              }
           }
         })
   

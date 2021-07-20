@@ -9,6 +9,7 @@ export const ORDERAZZ = "ORDER_AZ";
 export const ORDERZAA = "ORDER_ZA";
 export const ORDERBYTHEHEAVY = "ORDER_BY_THE_HEAVY";
 export const ORDERBYTHELIGHT = "ORDER_BY_THE_LIGHT";
+export const FILTERBYTEMPS = "FILTER_BY_TEMPS";
 
 export function getDogs(dispatch) {
     return function(dispatch) {
@@ -158,5 +159,13 @@ export function getLightiest() {
                     payload: orderLightiest
                 })
             })
+    }
+}
+
+
+export function filter(array) {
+    return {
+        type: FILTERBYTEMPS,
+        payload: array
     }
 }
