@@ -57,7 +57,6 @@ export function searchDog(name) {
 }
 
 export function orderAZ() {
-    console.log("hola vengo a ordenar")
     return function(dispatch) {
         return axios.get('http://localhost:3001/dogs')
         .then(resp => {
@@ -66,7 +65,6 @@ export function orderAZ() {
                 if (a.name < b.name) return -1;
                 return 0;
             });
-            console.log(orderByAZ)
             dispatch({
                 type: ORDERAZZ,
                 payload: orderByAZ

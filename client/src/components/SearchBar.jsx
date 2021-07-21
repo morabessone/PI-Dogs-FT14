@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { searchDog } from "../actions";
+import { FaSearch } from "react-icons/fa";
+import style from "./SearchBar.module.css";
+
 export default function SearchBar() {
 
     const [search, setSearch] = useState("");
@@ -17,10 +20,10 @@ export default function SearchBar() {
     }
 
     return (
-        <div>
+        <div className={style.search}>
             <form>
-                <input type="text" placeholder="Insert a breed..." value={search} onChange={(e) => handleChange(e)} />
-                <button type="submit" onClick={(e) => handleSubmit(e)}>Search</button>
+                <input className={style.input} type="text" placeholder="Insert a breed..." value={search} onChange={(e) => handleChange(e)} />
+                <button className={style.btn} type="submit" onClick={(e) => handleSubmit(e)}><FaSearch className={style.icon}/></button>
             </form>
         </div>
     )

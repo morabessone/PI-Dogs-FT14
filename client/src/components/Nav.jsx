@@ -2,17 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { Order } from "./Order";
+import style from "./Nav.module.css";
 
 
 export function Nav () {
     return (
-        <div>
+        <div className={style.navbar}>
+            <div>
             <Link to = "/home">
-                Home
+                <button className={style.btn}>Home</button>
             </Link>
-            <Link to = "/dog">
-                Create a dog
+            </div>
+            <div>
+            <Link to = "/dog"> 
+                <button className={style.btn}>Create a dog</button>
             </Link>
+            </div>
             <SearchBar />
             <Order />
         </div>

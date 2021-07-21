@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 import { filterBy, getHeaviest, getLightiest, getTemperaments, orderAZ, orderZA, filter, getDogs } from '../actions';
-
+import style from "./Order.module.css"
 
 export function Order() {
 
@@ -73,19 +73,18 @@ export function Order() {
     }
 
     return (
-        <div>
-            <button onClick={(e) => orderByAz(e)}>A to Z</button>
-            <button onClick={(e) => orderByZa(e)}>Z TO A</button>
-            <button value="DB" type="submit" onClick={(e) => handleSelect(e)}>DATABASE</button> 
-            <button value="ALL" type="submit" onClick={(e) => handleSelected(e)}>ALL</button> 
-            <button value="API" type="submit" onClick={(e) => handleSelect(e)}>API</button> 
-            <button onClick={(e) => orderByHeaviest(e)}>Weight: + to -</button>
-            <button onClick={(e) => orderByLightiest(e)}>Weight: - to +</button>
+        <div className={style.container}>
+            <button className={style.button} onClick={(e) => orderByAz(e)}>A to Z</button>
+            <button className={style.button} onClick={(e) => orderByZa(e)}>Z to A</button>
+            <button className={style.button} value="DB" type="submit" onClick={(e) => handleSelect(e)}>MY DOGS</button> 
+            <button className={style.button} value="ALL" type="submit" onClick={(e) => handleSelected(e)}>ALL</button> 
+            <button className={style.button} value="API" type="submit" onClick={(e) => handleSelect(e)}>API</button> 
+            <button className={style.button} onClick={(e) => orderByHeaviest(e)}>HEAVY</button>
+            <button className={style.button} onClick={(e) => orderByLightiest(e)}>LIGHT</button>
 
-        <div>
+        <div className={style.container}>
             <form onSubmit={handleSubmit}>
-                <label>Filter by temp</label>
-                <select onChange={handleChange} name="temperaments" value={selectTemp}>
+                <select className={style.containerFilt} onChange={handleChange} name="temperaments" value={selectTemp}>
                     {
                         tempers?.map((t) => {
                             return (
@@ -94,12 +93,11 @@ export function Order() {
                         })
                     }
                 </select>
-                <button type="submit">Filter</button>
+                <button className={style.button2} type="submit">Filter</button>
             </form>
         </div>
     </div>
     )
-
 }
 
 module.export = Order;

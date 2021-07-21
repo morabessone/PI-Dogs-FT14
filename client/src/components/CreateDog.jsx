@@ -4,7 +4,6 @@ import style from "./CreateDog.module.css"
 import { getTemperaments } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 
-
 export function validate(input) {
     let errors = {};
     if (!input.name) {
@@ -48,7 +47,6 @@ export default function CreateDog() {
     [])
     
     const tempss = useSelector(state => state.allTemps);
-    console.log("tempss", tempss)
 
     const handleInputChange = function(e) {
         setInput({
@@ -84,7 +82,7 @@ export default function CreateDog() {
             temperaments: [...prev.temperaments, parseInt(e.target.value)],
           }));
         }
-      }
+    }
 
     const tempsNames = (array) => {
         let names = [];
@@ -101,36 +99,46 @@ export default function CreateDog() {
 
     return (
         <form onSubmit = {handleSubmit}>
-            <div>
+            <div className={style.background}>
                 <ul>
+                    <div className={style.label}>
                     <li>
                         <label>Name:</label>
                     </li>
-                    <input className={errors.name} key="name" type="text" name="name" placeholder="Insert name..." onChange={handleInputChange} value={input.name}/>
+                    </div>
+                    <input className={style.input} key="name" type="text" name="name" placeholder="Insert name..." onChange={handleInputChange} value={input.name}/>
                     {errors.name && (<p className={style.danger}>{errors.name}</p>)}
                     <br/>
+                    <div className={style.label}>
                     <li>
                         <label>Height:</label>
                     </li>
-                    <input className={errors.height} key="height" type="text" name="height" placeholder="Insert height..." onChange={handleInputChange} value={input.height}/>
+                    </div>
+                    <input className={style.input} key="height" type="text" name="height" placeholder="Insert height..." onChange={handleInputChange} value={input.height}/>
                     {errors.height && (<p className={style.danger}>{errors.height}</p>)}
                     <br/>
+                    <div className={style.label}>
                     <li>
                         <label>Weight:</label>
                     </li>
-                    <input className={errors.weight} key="weight" type="text" name="weight" placeholder="Insert weight..." onChange={handleInputChange} value={input.weight}/>
+                    </div>
+                    <input className={style.input} key="weight" type="text" name="weight" placeholder="Insert weight..." onChange={handleInputChange} value={input.weight}/>
                     {errors.weight && (<p className={style.danger}>{errors.weight}</p>)}
                     <br/>
+                    <div className={style.label}>
                     <li>
                         <label>Life Span:</label>
                     </li>
-                    <input className={errors.life_span} key="life_span" type="text" name="life_span" placeholder="Insert life span..." onChange={handleInputChange} value={input.life_span}/>
+                    </div>
+                    <input className={style.input} key="life_span" type="text" name="life_span" placeholder="Insert life span..." onChange={handleInputChange} value={input.life_span}/>
                     {errors.life_span && (<p className={style.danger}>{errors.life_span}</p>)}
                     <br/>
+                    <div className={style.label}>
                     <li>
                         <label>Temperaments:</label>
                     </li>
-                    <select key="temperaments" name="temperaments" onChange={(e) => handleSelect(e)} required value={input.temperaments}>
+                    </div>
+                    <select className={style.select} key="temperaments" name="temperaments" onChange={(e) => handleSelect(e)} required value={input.temperaments}>
                         {
                             tempss?.map((e) => (
                                 <option value={e.id} key={e.id}>
@@ -148,9 +156,7 @@ export default function CreateDog() {
                             </p>
                         ))
                     }
-                    <li>
-                    <button type= "submit" name= "submit" onClick={handleSubmit}>Submit</button>
-                    </li>
+                    <button className={style.button} type= "submit" name= "submit" onClick={handleSubmit}>Create</button>
                 </ul>
             </div>
         </form>

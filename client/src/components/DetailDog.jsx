@@ -19,14 +19,15 @@ export default function DogDetail({match}) {
 
         if (id.length < 10) {
             return (
-                <div className={style.contenedor}>
-
-                    <p className={style.text}>{aDog?.name}</p>
-                    <img src={aDog?.image?.url} className={style.image} alt="Not found"/>
-                    <p className={style.text2}>{aDog?.height?.metric}</p>
-                    <p className={style.text2}>{aDog?.weight?.metric}</p>
-                    <p className={style.text2}>{aDog?.life_span}</p>
-                    <p className={style.text2}>{aDog?.temperament}</p>
+                <div className={style.background}>
+                    <div className={style.contenedor}>
+                        <p className={style.text}>{aDog?.name}</p>
+                        <img src={aDog?.image?.url} className={style.image} alt="Not found"/>
+                        <p className={style.text2}>{aDog?.height?.metric}</p>
+                        <p className={style.text2}>{aDog?.weight?.metric}</p>
+                        <p className={style.text2}>{aDog?.life_span}</p>
+                        <p className={style.text2}>{aDog?.temperament}</p>
+                    </div>
                 </div>
             )
         } else {
@@ -40,13 +41,15 @@ export default function DogDetail({match}) {
                 }
             })
             return (
-                <div className={style.contenedor}>
-                    <p className={style.text}>{aDog[0]?.name}</p>
-                    <img src={url} className={style.image} alt="Not found"/>
-                    <p className={style.text2}>{aDog[0]?.height}</p>
-                    <p className={style.text2}>{aDog[0]?.weight}</p>
-                    <p className={style.text2}>{aDog[0]?.life_span}</p>
-                    <p className={style.text2}>{aDog[0]?.temperament}</p>
+                <div className={style.background}>
+                    <div className={style.contenedor}>
+                        <p className={style.text}>{aDog[0]?.name}</p>
+                        <img src={url} className={style.image} alt="Not found"/>
+                        <p className={style.text2}>{aDog[0]?.height}</p>
+                        <p className={style.text2}>{aDog[0]?.weight}</p>
+                        <p className={style.text2}>{aDog[0]?.life_span}</p>
+                        <p className={style.text2}>{aDog[0]?.temperament}</p>
+                    </div>
                 </div>
             )
         }
